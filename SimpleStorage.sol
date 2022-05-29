@@ -20,6 +20,7 @@ contract UserSimpleStorage{
     mapping(address => User) public users;
 
     function CreateNewUser(address _userAddress, uint256 _userID, string memory _username) public{
+        require(owner==msg.sender);
         User storage user = users[_userAddress];
         // Check that user does not already exist
         require(!user.set);
